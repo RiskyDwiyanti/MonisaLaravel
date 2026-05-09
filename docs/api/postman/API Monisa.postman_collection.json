@@ -1,0 +1,201 @@
+{
+  "info": {
+    "_postman_id": "0c28e212-1ca5-44a6-a22f-cdf7b63d91d2",
+    "name": "API Monisa",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17217181",
+    "_collection_link": "https://go.postman.co/collection/17217181-0c28e212-1ca5-44a6-a22f-cdf7b63d91d2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Sign Up",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Devan Prasetian",
+                  "type": "text",
+                  "uuid": "63805d0d-e7a9-47fa-8c52-5de7622df576"
+                },
+                {
+                  "key": "email",
+                  "value": "user@example.com",
+                  "type": "text",
+                  "uuid": "281aeb1d-a9ca-4ecd-a8fe-112b687710e7"
+                },
+                {
+                  "key": "phone",
+                  "value": "089580110898",
+                  "type": "text",
+                  "uuid": "a65a83b4-0dbb-4b5e-9c2c-7c7ebd449378"
+                },
+                {
+                  "key": "username",
+                  "value": "devan04",
+                  "type": "text",
+                  "uuid": "bb9a8cb6-cb77-48e4-91f7-235a614290a4"
+                },
+                {
+                  "key": "password",
+                  "value": "devan1234",
+                  "type": "text",
+                  "uuid": "0a495cf1-18c9-4dbc-9a8c-cbffb401cf3b"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "devan1234",
+                  "type": "text",
+                  "uuid": "d8c46f19-971e-450c-93d9-baa622e20c95"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{local}}/auth/signup",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sign In",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "devan04",
+                  "type": "text",
+                  "uuid": "a65a83b4-0dbb-4b5e-9c2c-7c7ebd449378"
+                },
+                {
+                  "key": "password",
+                  "value": "devan1234",
+                  "type": "text",
+                  "uuid": "0a495cf1-18c9-4dbc-9a8c-cbffb401cf3b"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{local}}/auth/signin",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "auth",
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sign Out",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "1|Oo9QtTq99bchaobzMrKnHC9BoOQX2nugUXIJedqpd8079279",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{local}}/auth/signout",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "auth",
+                "signout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "1|vU2mWiRI9iJq58jBN7MOPCVls9zaIUhcBZhtmjWud0a6bc7b",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{local}}/auth/profile",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Welcome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{local}}/welcome",
+          "host": [
+            "{{local}}"
+          ],
+          "path": [
+            "welcome"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
