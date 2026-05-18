@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('welcome', function(){
     return response()->json([
         'success' => true,
-        'message' => 'Welcome to API v1 On Pride'
+        'message' => 'Welcome to API v1 Monisa'
     ]);
 });
 

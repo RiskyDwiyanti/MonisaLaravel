@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->enum('role', config('enum.role'))->default('Siswa');
+            $table->enum('role', config('enum.roles'));
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

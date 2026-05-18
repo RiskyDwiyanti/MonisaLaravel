@@ -63,9 +63,9 @@
               ]
             },
             "url": {
-              "raw": "{{local}}/auth/signup",
+              "raw": "{{api}}/auth/signup",
               "host": [
-                "{{local}}"
+                "{{api}}"
               ],
               "path": [
                 "auth",
@@ -98,9 +98,9 @@
               ]
             },
             "url": {
-              "raw": "{{local}}/auth/signin",
+              "raw": "{{api}}/auth/signin",
               "host": [
-                "{{local}}"
+                "{{api}}"
               ],
               "path": [
                 "auth",
@@ -132,9 +132,9 @@
               }
             ],
             "url": {
-              "raw": "{{local}}/auth/signout",
+              "raw": "{{api}}/auth/signout",
               "host": [
-                "{{local}}"
+                "{{api}}"
               ],
               "path": [
                 "auth",
@@ -166,9 +166,9 @@
               }
             ],
             "url": {
-              "raw": "{{local}}/auth/profile",
+              "raw": "{{api}}/auth/profile",
               "host": [
-                "{{local}}"
+                "{{api}}"
               ],
               "path": [
                 "auth",
@@ -186,9 +186,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{local}}/welcome",
+          "raw": "{{api}}/welcome",
           "host": [
-            "{{local}}"
+            "{{api}}"
           ],
           "path": [
             "welcome"

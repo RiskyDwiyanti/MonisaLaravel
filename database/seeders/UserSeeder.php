@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
 
     private function createSuperAdminUser(): void
     {
-        $user = User::create([
+        User::create([
             'name' => 'Devan Eka',
             'email' => 'devanprasetian@gmail.com',
             'phone' => '0895801108988',
@@ -28,24 +28,32 @@ class UserSeeder extends Seeder
             'password' => Hash::make('Eef0w4tn')
         ]);
 
-        $user2 = User::create([
+        User::create([
             'name' => 'Andre',
             'email' => 'andre@berdikari.asia',
             'phone' => '085821364004',
             'username' => 'andre@berdikari.asia',
-            'role' => 'Siswa',
+            'role' => 'Admin',
             'password' => Hash::make('berdikari2026')
         ]);
 
-        // Get or create superadmin role and assign permission to it
-        Role::firstOrCreate(
-            ['name' => 'superadmin', 'guard_name' => 'web']
-        );
+        User::create([
+            'name' => 'Risky Dwi',
+            'email' => 'risky@gmail.com',
+            'phone' => '081234567890',
+            'username' => 'Risky123',
+            'role' => 'Student',
+            'password' => Hash::make('risky123')
+        ]);
 
-        $user->assignRole('superadmin');
-        $user2->assignRole('superadmin');
-
-        $this->command->info('✓ Superadmin user created: ' . $user->email);
-        $this->command->info('✓ Superadmin user created: ' . $user2->email);
+        User::create([
+            'name' => 'Jhon Doe',
+            'email' => 'jhon@gmail.com',
+            'phone' => '081234567891',
+            'username' => 'Jhon123',
+            'role' => 'Teacher',
+            'password' => Hash::make('jhon123')
+        ]);
+        
     }
 }
