@@ -14,7 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            UserSeeder::class
+            RoleSeeder::class,
+            PermissionSeeder::class,
+            UserSeeder::class,
+            RolePermissionSeeder::class,
+            ModelHasRoleSeeder::class,
+            MenuSeeder::class,
+            MenuRoleSeeder::class
         ]);
+        // run php artisan migrate:fresh --seed : untuk me-reset table dan seeder
     }
 }
