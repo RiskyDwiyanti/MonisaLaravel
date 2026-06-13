@@ -16,21 +16,21 @@ class MenuSeeder extends Seeder
         Menu::insert([
             [
                 'name'=>'Dashboard',
-                'route'=>'dashboard',
+                'route'=>'dashboard.index',
                 'icon'=>'fas fa-home',
                 'parent_id'=>null,
                 'order'=>1
             ],
             [
-                'name'=>'User Management',
+                'name'=>'Settings',
                 'route'=>null,
                 'icon'=>'fas fa-users',
                 'parent_id'=>null,
                 'order'=>2
             ],
             [
-                'name'=>'Users',
-                'route'=>'users.index',
+                'name'=>'Menus',
+                'route'=>'menus.index',
                 'icon'=>'fas fa-user',
                 'parent_id'=>2,
                 'order'=>1
