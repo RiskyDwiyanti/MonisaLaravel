@@ -2,5 +2,6 @@
 
 return [
     //basic enum
-    'roles' => ['Admin', 'Student', 'Teacher', 'parent']
+    'roles' => ['admin', 'student', 'teacher', 'parent'],
+    'types' => ['yt', 'ig', 'tiktok', 'fb', 'wa'] 
 ];

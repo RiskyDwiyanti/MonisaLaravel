@@ -20,7 +20,14 @@ class DatabaseSeeder extends Seeder
             RolePermissionSeeder::class,
             ModelHasRoleSeeder::class,
             MenuSeeder::class,
-            MenuRoleSeeder::class
+            MenuRoleSeeder::class,
+            SchoolsSeeder::class,
+            SchoolGalleriesSeeder::class,
+            SchoolSocialMediaSeeder::class,
+            MajorSeeder::class,
+            MasterMapelSeeder::class,
+            SchoolMapelSeeder::class,
+            FacilitiesSeeder::class,
         ]);
         // run php artisan migrate:fresh --seed : untuk me-reset table dan seeder
     }
