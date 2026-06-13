@@ -13,7 +13,3 @@ Route::middleware('auth')->group(function(){
     Route::resource('dashboard', DashboardController::class);
     Route::resource('menus', MenuController::class);
 });
-
-Route::get('/roles/index', function () {
-    return view('roles.index');
-});
