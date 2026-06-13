@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('auth.index');
@@ -10,8 +11,7 @@ Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
 
 Route::middleware('auth')->group(function(){
     Route::resource('dashboard', DashboardController::class);
-
-    
+    Route::resource('menus', MenuController::class);
 });
 
 Route::get('/roles/index', function () {
