@@ -35,6 +35,13 @@ class MenuSeeder extends Seeder
                 'parent_id'=>2,
                 'order'=>1
             ],
+            [
+                'name'=>'Roles',
+                'route'=>'roles.index',
+                'icon'=>'fas fa-user-tag',
+                'parent_id'=>2,
+                'order'=>2
+            ],
         ]);
     }
 }

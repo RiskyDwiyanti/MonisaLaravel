@@ -10,4 +10,10 @@ Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
 
 Route::middleware('auth')->group(function(){
     Route::resource('dashboard', DashboardController::class);
+
+    
+});
+
+Route::get('/roles/index', function () {
+    return view('roles.index');
 });
