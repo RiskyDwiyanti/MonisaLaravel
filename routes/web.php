@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FacilitiesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MySchoolController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SchoolsController;
 use App\Models\Role;
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function(){
     });
 
     Route::middleware(['role:admin'])->group(function () {
+        Route::resource('my-school', MySchoolController::class);
         Route::resource('facilities', FacilitiesController::class);
     });
 });

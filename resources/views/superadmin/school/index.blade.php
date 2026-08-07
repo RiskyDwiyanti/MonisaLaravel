@@ -90,6 +90,26 @@
                             Kota/Kabupaten
                         </th>
 
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase text-gray-500">
+                            Kecamatan
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase text-gray-500">
+                            Kelurahan
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase text-gray-500">
+                            Kode Pos
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase text-gray-500">
+                            Latitude
+                        </th>
+
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase text-gray-500">
+                            Longitude
+                        </th>
+
                         <th class="px-6 py-4 text-center text-xs font-semibold uppercase text-gray-500">
                             Aksi
                         </th>
@@ -138,6 +158,26 @@
 
                             <td class="px-6 py-5 text-sm text-gray-700">
                                 {{ $school->kota_kabupaten }}
+                            </td>
+
+                            <td class="px-6 py-5 text-sm text-gray-700">
+                                {{ $school->kecamatan }}
+                            </td>
+
+                            <td class="px-6 py-5 text-sm text-gray-700">
+                                {{ $school->kelurahan }}
+                            </td>
+
+                            <td class="px-6 py-5 text-sm text-gray-700">
+                                {{ $school->kode_pos }}
+                            </td>
+
+                            <td class="px-6 py-5 text-sm text-gray-700">
+                                {{ $school->latitude }}
+                            </td>
+
+                            <td class="px-6 py-5 text-sm text-gray-700">
+                                {{ $school->longitude }}
                             </td>
 
                             <td class="px-6 py-5">
