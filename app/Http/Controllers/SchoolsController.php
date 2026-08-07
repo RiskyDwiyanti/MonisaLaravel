@@ -12,7 +12,8 @@ class SchoolsController extends Controller
      */
     public function index()
     {
-        //
+        $schools = Schools::all();
+        return view('school.index', compact('schools'));
     }
 
     /**

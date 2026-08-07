@@ -9,23 +9,7 @@ class Schools extends Model
 {
     use HasFactory;
     protected $table = 'schools';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'kode_sekolah',
-        'nama',
-        'alamat_lengkap',
-        'provinsi',
-        'kota_kabupaten',
-        'kecamatan',
-        'kelurahan',
-        'kode_pos',
-        'latitude',
-        'longitude',
-        'no_telepon',
-        'email',
-        'link_website',
-        'photo'
-    ];
+    protected $guarded = [];
 
     public function galleries()
     {

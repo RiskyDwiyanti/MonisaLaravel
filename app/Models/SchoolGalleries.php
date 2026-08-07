@@ -9,12 +9,7 @@ class SchoolGalleries extends Model
 {
     use HasFactory;
     protected $table = 'school_galleries';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'name',
-        'link',
-        'school_id'
-    ];
+    protected $guarded = [];
 
     public function school()
     {

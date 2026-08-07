@@ -9,12 +9,7 @@ class Facilities extends Model
 {
     use HasFactory;
     protected $table = 'facilities';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'name',
-        'image',
-        'school_id'
-    ];
+    protected $guarded = [];
 
     public function school()
     {
