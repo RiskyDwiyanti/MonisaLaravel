@@ -9,11 +9,7 @@ class MasterMapel extends Model
 {
     use HasFactory;
     protected $table = 'master_mapels';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'kode_mapel',
-        'name'
-    ];
+    protected $guarded = [];
 
     public function schoolMapels()
     {

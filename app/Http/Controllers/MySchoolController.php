@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Facilities;
 use Illuminate\Http\Request;
 
-class FacilitiesController extends Controller
+class MySchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('facilities.index');
+        $school = auth()->user()->admin->school;
+        return view('admin.school.index', compact('school'));
     }
 
     /**
@@ -34,7 +34,7 @@ class FacilitiesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Facilities $facilities)
+    public function show(string $id)
     {
         //
     }
@@ -42,15 +42,16 @@ class FacilitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Facilities $facilities)
+    public function edit(string $id)
     {
-        //
+        $school = auth()->user()->admin->school;
+        return view('admin.school.edit', compact('school'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Facilities $facilities)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +59,7 @@ class FacilitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Facilities $facilities)
+    public function destroy(string $id)
     {
         //
     }
