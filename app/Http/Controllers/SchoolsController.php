@@ -66,8 +66,10 @@ class SchoolsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schools $schools)
+    public function destroy(Schools $school)
     {
-        //
+        $school->delete();
+
+        return redirect()->route('schools.index')->with('success', 'School deleted successfully.');
     }
 }

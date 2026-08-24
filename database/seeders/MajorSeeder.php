@@ -16,13 +16,11 @@ class MajorSeeder extends Seeder
         Major::create([
             'kode_jur' => 'RPL',
             'name' => 'Rekayasa Perangkat Lunak',
-            'school_id' => 1
         ]);
 
         Major::create([
             'kode_jur' => 'TKJ',
             'name' => 'Teknik Komputer dan Jaringan',
-            'school_id' => 2
         ]);
     }
 }

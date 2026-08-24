@@ -41,7 +41,7 @@
                     <div class="text-sm text-gray-500">
                         Total Menu:
                         <span class="font-semibold text-gray-700">
-                            {{ $menus->count() }}
+                            {{ $menus->total() }}
                         </span>
                     </div>
 
@@ -91,7 +91,7 @@
                             <tr class="border-t border-gray-100 hover:bg-indigo-50/40 transition duration-200">
 
                                 <td class="px-6 py-5 text-sm text-gray-600">
-                                    {{ $index + 1 }}
+                                    {{ $menus->firstItem() + $index }}
                                 </td>
 
                                 <td class="px-6 py-5">
@@ -189,6 +189,10 @@
 
                 </table>
 
+            </div>
+
+            <div class="border-t border-gray-100 px-6 py-4">
+                {{ $menus->links() }}
             </div>
 
         </div>

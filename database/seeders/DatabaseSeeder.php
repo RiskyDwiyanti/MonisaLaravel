@@ -22,12 +22,15 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             MenuRoleSeeder::class,
             SchoolsSeeder::class,
-            SchoolGalleriesSeeder::class,
+            SchoolGallerySeeder::class,
             SchoolSocialMediaSeeder::class,
             MajorSeeder::class,
             MasterMapelSeeder::class,
             SchoolMapelSeeder::class,
             FacilitiesSeeder::class,
+            StudentSeeder::class,
+            TeacherSeeder::class,
+            SchoolMajorSeeder::class,
         ]);
         // run php artisan migrate:fresh --seed : untuk me-reset table dan seeder
     }

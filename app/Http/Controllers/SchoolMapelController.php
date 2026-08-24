@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MasterMapel;
 use App\Models\SchoolMapel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SchoolMapelController extends Controller
 {
@@ -12,7 +14,17 @@ class SchoolMapelController extends Controller
      */
     public function index()
     {
-        //
+        $admin = Auth::user()->admin;
+
+        if (!$admin || !$admin->school) {
+            abort(404, 'Sekolah belum terhubung dengan akun admin.');
+        }
+
+        $school = $admin->school;
+
+        $schoolMapels = SchoolMapel::with('masterMapel')->where('school_id', $school->id)->latest()->paginate(10);
+
+        return view('admin.school_mapel.index',compact('schoolMapels', 'school'));
     }
 
     /**
@@ -20,7 +32,20 @@ class SchoolMapelController extends Controller
      */
     public function create()
     {
-        //
+        $admin = Auth::user()->admin;
+
+        if (!$admin || !$admin->school) {
+            abort(404, 'Sekolah belum terhubung dengan akun admin.');
+        }
+
+        $school = $admin->school;
+        $masterMapels = MasterMapel::whereNotIn('id', SchoolMapel::where('school_id', $school->id)->pluck('master_mapel_id'))
+            ->orderBy('name')->get();
+
+        return view(
+            'admin.school_mapel.create',
+            compact('school', 'masterMapels')
+        );
     }
 
     /**
@@ -28,7 +53,43 @@ class SchoolMapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $admin = Auth::user()->admin;
+
+        if (!$admin || !$admin->school) {
+            abort(404, 'Sekolah belum terhubung dengan akun admin.');
+        }
+
+        $school = $admin->school;
+
+        $validated = $request->validate([
+            'master_mapel_id' => [
+                'required',
+                'exists:master_mapels,id',
+            ],
+        ]);
+
+        // Cegah duplikat
+        $exists = SchoolMapel::where('school_id', $school->id)
+            ->where(
+                'master_mapel_id',
+                $validated['master_mapel_id']
+            )
+            ->exists();
+
+        if ($exists) {
+            return back()
+                ->withErrors([
+                    'master_mapel_id' => 'Mata pelajaran sudah ditambahkan.'
+                ])
+                ->withInput();
+        }
+
+        SchoolMapel::create([
+            'school_id' => $school->id,
+            'master_mapel_id' => $validated['master_mapel_id'],
+        ]);
+
+        return redirect()->route('school_mapel.index')->with('success', 'Mata pelajaran berhasil ditambahkan.');
     }
 
     /**
@@ -60,6 +121,21 @@ class SchoolMapelController extends Controller
      */
     public function destroy(SchoolMapel $schoolMapel)
     {
-        //
+        $admin = Auth::user()->admin;
+
+        if (!$admin || !$admin->school) {
+            abort(404, 'Sekolah belum terhubung dengan akun admin.');
+        }
+
+        $school = $admin->school;
+
+        // Pastikan mapel memang milik sekolah admin
+        if ($schoolMapel->school_id !== $school->id) {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+
+        $schoolMapel->delete();
+
+        return redirect()->route('school_mapel.index')->with('success', 'Mata pelajaran berhasil dihapus.');
     }
 }

@@ -35,4 +35,9 @@ class Schools extends Model
     {
         return $this->belongsTo(Village::class, 'village_id');
     }
+
+    public function majors()
+    {
+        return $this->hasMany(SchoolMajor::class);
+    }
 }
