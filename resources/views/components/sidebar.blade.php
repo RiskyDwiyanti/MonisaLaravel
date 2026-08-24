@@ -1,6 +1,25 @@
+<!-- Overlay Mobile -->
+<div
+    x-show="mobileOpen"
+    x-transition.opacity
+    @click="mobileOpen = false"
+    class="fixed inset-0 bg-black/50 z-40 lg:hidden"
+></div>
+
 <aside
-    class="bg-slate-900 text-white transition-all duration-300"
-    :class="sidebarOpen ? 'w-64' : 'w-20'"
+    class="fixed lg:static inset-y-0 left-0 z-50
+           bg-slate-900 text-white
+           transition-all duration-300 ease-in-out"
+
+    :class="[
+        mobileOpen
+            ? 'translate-x-0'
+            : '-translate-x-full lg:translate-x-0',
+
+        sidebarOpen
+            ? 'w-64'
+            : 'w-20'
+    ]"
 >
 
     <!-- Logo -->
@@ -8,44 +27,47 @@
 
         <div class="flex items-center gap-3">
 
-            <div
-                class="w-10 h-10 rounded bg-pink-500 flex items-center justify-center font-bold">
+            <div class="w-10 h-10 bg-pink-500 rounded flex items-center justify-center">
                 M
             </div>
 
             <span
                 x-show="sidebarOpen"
                 x-transition
-                class="font-semibold text-lg">
-                Metronic
+                class="font-semibold text-lg"
+            >
+                Monisa
             </span>
 
         </div>
 
-        <button @click="sidebarOpen=!sidebarOpen">
-
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4 text-slate-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">
-
+        <!-- Desktop Collapse -->
+        <button
+            @click="sidebarOpen = !sidebarOpen"
+            class="hidden lg:block"
+        >
+            <svg class="w-5 h-5">
                 <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    fill="none"
+                    stroke="currentColor"
                     stroke-width="2"
-                    d="M15 19l-7-7 7-7"/>
-
+                    d="M15 19l-7-7 7-7"
+                />
             </svg>
+        </button>
 
+        <!-- Mobile Close -->
+        <button
+            @click="mobileOpen = false"
+            class="lg:hidden"
+        >
+            ✕
         </button>
 
     </div>
 
     <!-- Menu -->
-
-    <nav class="mt-4 px-2">
+    <nav class="p-3 overflow-y-auto h-[calc(100vh-64px)]">
         @php
         $roleIds = [1];
 
@@ -68,7 +90,7 @@
             ->get();
         @endphp
 
-        @foreach ($menus as $menu)
+        @foreach($menus as $menu)
             <x-menu-item :menu="$menu" />
         @endforeach
 

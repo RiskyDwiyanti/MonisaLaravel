@@ -13,31 +13,32 @@
 
 <body class="bg-slate-100">
 
-<div
-    x-data="{
-        sidebarOpen:true,
-        mobileOpen:false
-    }"
-    class="h-screen flex overflow-hidden"
->
+    <div
+        x-data="{
+            sidebarOpen: true,
+            mobileOpen: false
+        }"
+        class="flex h-screen overflow-hidden"
+    >
 
-    <x-sidebar />
+        <x-sidebar />
 
-    <div class="flex flex-col flex-1 overflow-hidden">
+        <div class="flex flex-col flex-1 overflow-hidden">
 
-        <x-navbar />
+            <x-navbar />
 
-        <main class="flex-1 overflow-y-auto">
+            <main class="flex-1 overflow-y-auto bg-slate-100">
+                <div class="max-w-7xl mx-auto px-6 py-8">
+                    @yield('content')
+                </div>
+            </main>
 
-            @yield('content')
+            <x-footer />
 
-        </main>
-
-        <x-footer />
+        </div>
 
     </div>
 
-</div>
-
 </body>
+
 </html>
