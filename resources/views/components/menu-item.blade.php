@@ -41,7 +41,14 @@
                     <i class="{{ $menu->icon }}"></i>
                 @endif
 
-                <span x-show="sidebarOpen">
+                <span
+                    x-show="sidebarOpen"
+                    class="hidden lg:block"
+                >
+                    {{ $menu->name }}
+                </span>
+
+                <span class="lg:hidden">
                     {{ $menu->name }}
                 </span>
 
