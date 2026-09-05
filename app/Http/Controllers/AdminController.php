@@ -92,6 +92,7 @@ class AdminController extends Controller
 
         DB::transaction(function () use ($validated, $admin) {
             $admin->user->update([
+                'name' => $validated['name'],
                 'username' => $validated['username'],
                 'email' => $validated['email'],
                 'password' => isset($validated['password']) ? bcrypt($validated['password']) : $admin->user->password,
@@ -111,6 +112,9 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        $admin->user->delete();
+        $admin->delete();
+
+        return redirect()->route('admins.index')->with('success', 'Admin deleted successfully.');
     }
 }

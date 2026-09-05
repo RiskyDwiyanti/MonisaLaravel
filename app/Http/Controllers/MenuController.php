@@ -13,7 +13,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
+        $menus = Menu::latest()->paginate(10);
         return view('superadmin.menu.menu_index', compact('menus'));
     }
 
