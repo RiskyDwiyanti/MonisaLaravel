@@ -22,6 +22,7 @@ class StudentFactory extends Factory
             'email' => $nisn . '@monisa.com',
             'password' => Hash::make($nisn),
             'name' => $name,
+            'username' => $nisn
         ]);
 
         $user->assignRole('student');

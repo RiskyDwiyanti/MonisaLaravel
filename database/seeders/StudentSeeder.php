@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rombel;
 use App\Models\Schools;
 use App\Models\Student;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,11 +15,12 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $schools = Schools::all();
+        $rombels = Rombel::all();
 
-        foreach ($schools as $school) {
-            Student::factory(10)->create([
-                'school_id' => $school->id,
+        foreach ($rombels as $rombel) {
+            Student::factory(5)->create([
+                'school_id' => $rombel->school_id,
+                'rombel_id' => $rombel->id,
             ]);
         }
     }

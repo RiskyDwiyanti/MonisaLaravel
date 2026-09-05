@@ -23,6 +23,7 @@ class TeacherFactory extends Factory
             'email' => $nuptk . '@monisa.com',
             'password' => Hash::make($nuptk),
             'name' => $name,
+            'username' => $nuptk,
         ]);
 
         $user->assignRole('teacher');

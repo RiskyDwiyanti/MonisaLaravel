@@ -39,7 +39,7 @@
                     <div class="text-sm text-gray-500">
                         Total Guru:
                         <span class="font-semibold text-gray-700">
-                            {{ $teachers->count() }}
+                            {{ $teachers->total() }}
                         </span>
                     </div>
 
@@ -61,6 +61,10 @@
 
                             <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                                 Nama
+                            </th>
+
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                Mapel
                             </th>
 
                             <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -93,7 +97,7 @@
                             <tr class="border-t border-gray-100 hover:bg-indigo-50/40 transition duration-200">
 
                                 <td class="px-6 py-5 text-sm text-gray-600">
-                                    {{ $index + 1 }}
+                                    {{ $teachers->firstItem() + $index }}
                                 </td>
 
                                 <td class="px-6 py-5">
@@ -101,6 +105,16 @@
                                     <div>
                                         <div class="font-semibold text-gray-800">
                                             {{ ucfirst($teacher->name) }}
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td class="px-6 py-5">
+
+                                    <div>
+                                        <div class="font-semibold text-gray-800">
+                                            {{ $teacher->schoolMapel->masterMapel->name }}
                                         </div>
                                     </div>
 
@@ -199,6 +213,10 @@
 
                 </table>
 
+            </div>
+
+            <div class="border-t border-gray-100 px-6 py-4">
+                {{ $teachers->links() }}
             </div>
 
         </div>

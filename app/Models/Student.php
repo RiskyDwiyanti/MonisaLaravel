@@ -24,4 +24,18 @@ class Student extends Model
         return $this->belongsTo(Schools::class, 'school_id');
     }
 
+    public function rombel()
+    {
+        return $this->belongsTo(Rombel::class, 'rombel_id');
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class, 'student_id');
+    }
+
+    public function guardians()
+    {
+        return $this->hasMany(Guardian::class);
+    }
 }

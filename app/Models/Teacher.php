@@ -24,4 +24,14 @@ class Teacher extends Model
     {
         return $this->belongsTo(Schools::class, 'school_id');
     }
+
+    public function schoolMapel()
+    {
+        return $this->belongsTo(SchoolMapel::class, 'school_mapel_id');
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(TeacherSchedule::class, 'teacher_id');
+    }
 }

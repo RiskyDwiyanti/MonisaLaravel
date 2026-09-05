@@ -2,58 +2,75 @@
 
 @section('content')
 
-    <div class="space-y-6, p-6">
-        <div class="mb-6 flex items-center justify-between">
+<div class="mb-6 flex items-center justify-between">
 
-        <div>
-            <h1 class="text-2xl font-bold text-gray-800">
-                Jurusan
-            </h1>
+    <div>
+        <h1 class="text-2xl font-bold text-gray-800">
+            Jurusan
+        </h1>
 
-            <p class="mt-1 text-gray-500">
-                Kelola jurusan yang tersedia di sekolah.
-            </p>
-        </div>
+        <p class="mt-1 text-gray-500">
+            Kelola jurusan yang tersedia di sekolah.
+        </p>
+    </div>
 
-            <a
-                href="{{ route('school_majors.create') }}"
-                class="rounded-xl bg-indigo-600 px-5 py-3 text-white hover:bg-indigo-700"
-            >
-                + Tambah Jurusan
-            </a>
+    @if ($schoolMajors->count() > 0)
 
-        </div>
+        <a
+            href="{{ route('school_majors.edit') }}"
+            class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-700"
+        >
+            Edit Jurusan
+        </a>
 
-        {{-- @if(session('success'))
+    @else
 
-            <div class="mb-6 rounded-xl bg-green-50 px-5 py-4 text-green-700">
-                {{ session('success') }}
-            </div>
+        <a
+            href="{{ route('school_majors.create') }}"
+            class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-700"
+        >
+            Tambah Jurusan
+        </a>
 
-        @endif --}}
+    @endif
 
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+</div>
 
-            @forelse($schoolMajors as $schoolMajor)
 
-                <div class="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+@if (session('success'))
 
-                    <div class="mb-4">
+    <div class="mb-6 rounded-xl border border-green-200 bg-green-50 px-5 py-4 text-sm text-green-700">
+        {{ session('success') }}
+    </div>
 
-                        <span class="text-sm font-medium text-indigo-600">
-                            {{ $schoolMajor->major->kode_jur }}
-                        </span>
+@endif
 
-                        <h2 class="mt-1 text-lg font-semibold text-gray-800">
-                            {{ $schoolMajor->major->name }}
-                        </h2>
 
-                    </div>
+@if ($schoolMajors->count() > 0)
+
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+
+        @foreach ($schoolMajors as $schoolMajor)
+
+            <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+
+                <div class="mb-2">
+                    <span class="text-sm font-semibold text-indigo-600">
+                        {{ $schoolMajor->major->kode_jur }}
+                    </span>
+                </div>
+
+                <h2 class="text-lg font-semibold text-gray-800">
+                    {{ $schoolMajor->major->name }}
+                </h2>
+
+
+                <div class="mt-6">
 
                     <form
                         action="{{ route('school_majors.destroy', $schoolMajor->id) }}"
                         method="POST"
-                        onsubmit="return confirm('Hapus jurusan ini dari sekolah?')"
+                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus jurusan ini?')"
                     >
 
                         @csrf
@@ -61,7 +78,7 @@
 
                         <button
                             type="submit"
-                            class="rounded-xl border border-red-200 px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                            class="rounded-xl border border-red-200 px-5 py-2 text-sm font-medium text-red-500 transition hover:bg-red-50"
                         >
                             Hapus
                         </button>
@@ -70,23 +87,33 @@
 
                 </div>
 
-            @empty
+            </div>
 
-                <div class="col-span-full rounded-2xl bg-white p-10 text-center">
+        @endforeach
 
-                    <h3 class="text-lg font-semibold text-gray-700">
-                        Belum ada jurusan.
-                    </h3>
-
-                    <p class="mt-1 text-gray-500">
-                        Silakan tambahkan jurusan dari master yang tersedia.
-                    </p>
-
-                </div>
-
-            @endforelse
-
-        </div>
     </div>
+
+@else
+
+    <div class="rounded-2xl border border-gray-200 bg-white p-10 text-center shadow-sm">
+
+        <h2 class="text-lg font-semibold text-gray-800">
+            Belum ada jurusan
+        </h2>
+
+        <p class="mt-2 text-sm text-gray-500">
+            Silakan tambahkan jurusan yang tersedia di sekolah.
+        </p>
+
+        <a
+            href="{{ route('school_majors.create') }}"
+            class="mt-5 inline-flex rounded-xl bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700"
+        >
+            Tambah Jurusan
+        </a>
+
+    </div>
+
+@endif
 
 @endsection

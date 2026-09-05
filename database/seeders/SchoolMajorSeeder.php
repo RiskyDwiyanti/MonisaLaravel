@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Major;
+use App\Models\SchoolMajor;
 use App\Models\Schools;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,6 +16,8 @@ class SchoolMajorSeeder extends Seeder
      */
     public function run(): void
     {
+        SchoolMajor::withTrashed()->forceDelete();
+
         $schools = Schools::all();
         $majors = Major::all();
 

@@ -101,6 +101,41 @@
                     @enderror
                 </div>
 
+                {{-- Mata Pelajaran --}}
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-gray-700">
+                        Mata Pelajaran <span class="text-red-500">*</span>
+                    </label>
+
+                    <select
+                        name="school_mapel_id"
+                        id="school_mapel_id"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                        required
+                    >
+                        <option value="">
+                            Pilih Mata Pelajaran
+                        </option>
+
+                        @foreach ($schoolMapels as $schoolMapel)
+                            <option
+                                value="{{ $schoolMapel->id }}"
+                                @selected(old('school_mapel_id', $teacher->school_mapel_id) == $schoolMapel->id)
+                            >
+                                {{ $schoolMapel->masterMapel->kode_mapel }}
+                                - 
+                                {{ $schoolMapel->masterMapel->name }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('school_mapel_id')
+                        <p class="mt-1 text-sm text-red-500">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
             </div>
 
             <div class="flex justify-end gap-3 border-t border-gray-100 px-8 py-5">

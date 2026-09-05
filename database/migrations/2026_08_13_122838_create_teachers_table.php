@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('school_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('school_mapel_id')->constrained()->cascadeOnDelete();
             $table->string('nip')->nullable()->unique();
             $table->string('nuptk')->nullable()->unique();
             $table->string('name');

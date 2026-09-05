@@ -27,10 +27,15 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             MasterMapelSeeder::class,
             SchoolMapelSeeder::class,
-            FacilitiesSeeder::class,
-            StudentSeeder::class,
-            TeacherSeeder::class,
             SchoolMajorSeeder::class,
+            FacilitiesSeeder::class,
+            AdminSeeder::class,
+            TeacherSeeder::class,
+            RombelSeeder::class,
+            StudentSeeder::class,
+            GuardianSeeder::class,
+            LessonPeriodSeeder::class,
+            TeacherScheduleSeeder::class,
         ]);
         // run php artisan migrate:fresh --seed : untuk me-reset table dan seeder
     }
